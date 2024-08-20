@@ -41,8 +41,8 @@ int main(int argc, char **argv)
 			if(c==pattern_to_search_for[j]){
 			j++;
 		}
-		i++;
 	}
+		i++;
 	}
 	cout << "[-1] didn't find\n";
 	return 0;
