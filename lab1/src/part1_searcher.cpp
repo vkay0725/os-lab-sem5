@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 			j++;
 		//    i++;
 			if(j==pattern_len){
-				cout << "[" << getpid() << "]" << "found at" << (i-pattern_len+1);
+				cout << "[" << getpid() << "] " << "found at " << (i-pattern_len+1);
 				return 1;
 			}
 		}
