@@ -24,15 +24,17 @@ int main(int argc, char **argv)
 	//TODO
 	int pattern_len = strlen(pattern_to_search_for);
 	ifstream file(file_to_search_in);
+	//to start the file reading from  given search_start_position not from start of the file 
+    file.seekg(search_start_position);
+
 	char c;
 	int i = search_start_position;
 	int j = 0;
 	while(file.get(c) && i<=search_end_position){
 		if(c==pattern_to_search_for[j]){
 			j++;
-		//    i++;
 			if(j==pattern_len){
-				cout << "[" << getpid() << "]" << "found at " << (i-pattern_len+1);
+				cout << "[" << getpid() << "] " << "found at " << (i-pattern_len+1)<<endl;
 				return 1;
 			}
 		}
@@ -41,10 +43,9 @@ int main(int argc, char **argv)
 			if(c==pattern_to_search_for[j]){
 			j++;
 		}
-		
 	}
-	i++;
+		i++;
 	}
-	cout << "[-1] didn't find\n";
+	cout << "["<<getpid()<<"]"<<" didn't find"<<endl;
 	return 0;
 }
