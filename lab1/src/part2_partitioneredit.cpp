@@ -44,11 +44,9 @@ int main(int argc, char **argv) {
                 cerr << "Failed to execute right partitioner.\n";
                 return -1;
             } else if (right_pid > 0) {
-                // Parent process logs the forked searcher PID
-                cout << "[" << getpid() << "] forked left child " << left_pid << "\n";
+
+                //cout << "[" << getpid() << "] forked left child " << left_pid << "\n";
                 cout << "[" << getpid() << "] forked right child " << right_pid << "\n";
-                
-                // Wait for the partitioner children processes to complete
                 int status;
                 if (waitpid(left_pid, &status, 0) == -1) {
                     cerr << "Error waiting for left child process: " << strerror(errno) << "\n";
@@ -82,10 +80,7 @@ int main(int argc, char **argv) {
             cerr << "Failed to execute searcher.\n";
             return -1;
         } else if (searcher_pid > 0) {
-            // Parent process logs the forked searcher PID
-            cout << "[" << getpid() << "] forked searcher child " << searcher_pid << "\n";
-            
-            // Wait for the searcher child process to complete
+            cout << "[" << getpid() << "] forked searcher child " << searcher_pid << "\n"; 
             int status;
             if (waitpid(searcher_pid, &status, 0) == -1) {
                 cerr << "Error waiting for searcher child process: " << strerror(errno) << "\n";
